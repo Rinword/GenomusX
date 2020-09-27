@@ -1,3 +1,0 @@
-# GenomusX
-
-Generation simulation
