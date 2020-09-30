@@ -1,23 +1,33 @@
-import React from 'react';
-import logo from '../logo.svg';
-import './App.css';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import { BaseContainer } from "./components/BaseContainer";
+import "./App.css";
 
-function App() {
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BaseContainer>
+      <Switch>
+        <Route
+          exact={true}
+          path={'/game'}
+          component={() => <div>game</div>}
+        />
+        <Route
+          exact={true}
+          path={'/armory'}
+          component={() => <div>armory</div>}
+        />
+        <Route
+          exact={true}
+          path={'/about'}
+          component={() => <div>about</div>}
+        />
+        <Route
+          exact={true}
+          path={'/'}
+          component={() => <div>base</div>}
+        />
+      </Switch>
+    </BaseContainer>
   );
-}
-
-export default App;
+};
