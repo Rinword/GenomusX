@@ -1,10 +1,10 @@
 import RouterStore from "./RouterStore";
 
 export interface FStores {
-    routing?: RouterStore;
+  routing?: RouterStore;
 }
 
-const stores: FStores = {};
+const stores: FStores = { };
 
 stores.routing = new RouterStore();
 

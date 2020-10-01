@@ -1,16 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "mobx-react";
-import { Router } from "react-router";
+import { Router } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import { App } from "./App";
-import "./index.css";
 import stores from "./stores";
+
+import "./styles.scss";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider {...stores}>
-      <Router history={stores.routing?.history as never}>
+      <Router history={stores.routing.history}>
         <App />
       </Router>
     </Provider>
