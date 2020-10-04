@@ -7,12 +7,9 @@ import { FStores } from "stores";
 
 import "./main-header.scss";
 
-@inject("routing")
 @observer
 export class Header extends React.Component<FStores> {
   render() {
-    const { routing } = this.props;
-
     return (
       <Box
         direction='row'
@@ -27,7 +24,7 @@ export class Header extends React.Component<FStores> {
           height='auto'
           margin='0 10px'
         >
-          <div onClick={() => routing.push("/")}>GenomusX</div>
+          <Link to="/">GenomusX</Link>
         </Box>
         <NavLink
           className='main__link'
@@ -36,12 +33,9 @@ export class Header extends React.Component<FStores> {
         >
           GAME
         </NavLink>
-        <div className='main__link' onClick={() => {
-          console.log('Ar');
-          routing.push("/armory")
-        } }>
+        <NavLink className='main__link' activeClassName='main__link_active' to="/armory">
           ARMORY
-        </div>
+        </NavLink>
         <NavLink
           className='main__link'
           activeClassName='main__link_active'

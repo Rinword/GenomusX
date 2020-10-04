@@ -1,11 +1,15 @@
 import React from "react";
 import cx from "classnames";
+
 import { Box } from "grommet";
+import { observer } from "mobx-react";
+import { FStores } from "stores";
 
 import "./styles.scss";
 
-export class AboutPage extends React.PureComponent {
-  constructor(props) {
+@observer
+export class AboutPage extends React.PureComponent<FStores> {
+  constructor(props: any) {
     super(props);
 
     this.state = {};
@@ -17,7 +21,7 @@ export class AboutPage extends React.PureComponent {
         <Box direction='row' className={cx("about__title")}>
           <h1>GenomusX</h1>
         </Box>
-        <Box className={cx("about__desc")} ai='flex-start'>
+        <Box className={cx("about__desc")}>
           <p>
             Моделирование генетических алгоритмов на примере игровой арены из 4
             персонажей с постоянно усиливающимися волнами противников.
@@ -37,7 +41,7 @@ export class AboutPage extends React.PureComponent {
             интеллект с минимальным участием человека.
           </p>
           <p>
-            Кроме того инструмент годится для оттачивания большинсва аспектов
+            Кроме того инструмент годится для оттачивания большинства аспектов
             игровой механики.
           </p>
         </Box>

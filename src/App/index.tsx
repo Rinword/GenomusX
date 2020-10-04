@@ -3,13 +3,12 @@ import { Switch, Route } from "react-router-dom";
 import { observer, inject } from "mobx-react";
 import { BaseContainer } from "./components/BaseContainer";
 import { AboutPage } from "./AboutPage";
-import {FStores} from "stores";
+import { FStores } from "stores";
 
-@inject('routing')
+@inject("routing")
 @observer
 export class App extends React.Component<FStores> {
   render() {
-    console.log(this.props.routing.location.pathname);
     return (
       <BaseContainer>
         <Switch>
