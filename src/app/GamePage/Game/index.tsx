@@ -21,20 +21,56 @@ export class Game extends React.Component {
   render() {
     const { map } = this.state;
 
-    if (!map.length) {
-      return (
-        <Box>
-          <Text>Игра не проинициализирована</Text>
-        </Box>
-      );
-    }
+    // if (!map.length) {
+    //   return (
+    //     <Box>
+    //       <Text>Игра не проинициализирована</Text>
+    //     </Box>
+    //   );
+    // }
 
     return (
       <Box direction='row'>
         <Box>
-          <GameMap map={map} tileSize="32" />
+          <GameMap map={_map} tileSize={64} />
         </Box>
       </Box>
     );
   }
 }
+
+const _map: Cell[][] = [
+  [
+    {
+      type: 'forest',
+    },
+    {
+      type: 'plain',
+    },
+    {
+      type: 'swamp',
+    },
+  ],
+  [
+    {
+      type: 'forest',
+    },
+    {
+      type: 'mountain',
+    },
+    {
+      type: 'hills',
+    },
+  ],
+  [
+    {
+      type: 'swamp',
+    },
+    {
+      type: 'hills',
+    },
+    {
+      type: 'plain',
+    },
+  ]
+]

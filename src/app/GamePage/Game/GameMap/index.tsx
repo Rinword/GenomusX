@@ -1,11 +1,14 @@
 import React from "react";
 import { Box, Text } from "grommet";
+import { GameCell } from "./GameCell";
+
+import styled from "styled-components";
 
 import { Cell } from "interfaces";
 
 interface GameMapProps {
   map: Cell[][];
-  tileSize: string;
+  tileSize: number;
 }
 
 export class GameMap extends React.Component<GameMapProps> {
@@ -22,10 +25,22 @@ export class GameMap extends React.Component<GameMapProps> {
 
     return (
       <Box>
-        <Box width={`${map.length * +tileSize}` } height={`${map[0].length * +tileSize}` }>
-          <GameMap map={map} tileSize={tileSize} />
-        </Box>
+        <MapWrap
+          width={`${map.length * tileSize + 4}px`}
+          height={`${map[0].length * tileSize + 4}px`}
+        >
+          {map.map((column: Cell[], y) =>
+            column.map((cell, x) => (
+              <GameCell key={`${x}_${y}`} cell={cell} position={{ x, y }} tileSize={tileSize} />
+            )),
+          )}
+        </MapWrap>
       </Box>
     );
   }
 }
+
+const MapWrap = styled(Box)`
+  border: 2px solid white;
+  position: relative;
+`;
