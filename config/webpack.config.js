@@ -296,6 +296,8 @@ module.exports = function(webpackEnv) {
         }),
         ...(modules.webpackAliases || {}),
         stores: path.resolve(__dirname, 'src/stores/index.tsx'),
+        ui: path.resolve(__dirname, '../src/ui/index.tsx'),
+        // app: path.resolve(__dirname, '../src/app/index.tsx'),
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding

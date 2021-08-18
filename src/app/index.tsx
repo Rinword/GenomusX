@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import { observer, inject } from "mobx-react";
 import { BaseContainer } from "./components/BaseContainer";
 import { AboutPage } from "./AboutPage";
+import { GamePage } from "./GamePage";
 import { FStores } from "stores";
 
 @inject("routing")
@@ -12,7 +13,7 @@ export class App extends React.Component<FStores> {
     return (
       <BaseContainer>
         <Switch>
-          <Route path={"/game"} component={() => <div>game</div>} />
+          <Route path={"/game"} component={GamePage} />
           <Route exact path={"/armory"} component={() => <div>armory</div>} />
           <Route exact path={"/about"} component={AboutPage} />
           <Route exact path={"/"} component={AboutPage} />
