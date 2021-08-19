@@ -1,20 +1,29 @@
 import socketIOClient from 'socket.io-client'
 
-class IoConntector {
+class IoConnector {
     connect: any;
-    constructor() {
-        this.connect = socketIOClient('http://localhost:3001');
+
+    init = () => {
+        if(!this.connect) {
+            this.connect = socketIOClient('http://localhost:3001', {
+                withCredentials: true,
+                extraHeaders: {
+                    "genomusx": "1.0"
+                }
+            });
+        }
     }
 
-    get() {
+    get = () => {
         if(this.connect) {
             return this.connect;
         } else {
-            this.connect = socketIOClient('http://localhost:3001');
+            this.init();
+            return this.connect;
         }
     }
 }
 
-const socket = new IoConntector();
+const socket = new IoConnector();
 
 export default socket;

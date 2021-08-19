@@ -5,10 +5,15 @@ import { BaseContainer } from "./components/BaseContainer";
 import { AboutPage } from "./AboutPage";
 import { GamePage } from "./GamePage";
 import { FStores } from "stores";
+import socket from "io";
 
 @inject("routing")
 @observer
 export class App extends React.Component<FStores> {
+  componentDidMount() {
+    socket.init();
+  }
+
   render() {
     return (
       <BaseContainer>

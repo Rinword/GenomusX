@@ -16,13 +16,14 @@ export class GamePage extends React.Component {
 
   sendMapSettings = () => {
     console.log("send to back options for create game");
-    const options = {};
+    const options = { mapSize: 15 };
     socket.get().emit("game_create", options as any);
   };
 
   componentDidMount() {
     socket.get().on("update_game", (data: GameI) => {
       this.setState({ map: data.map });
+      console.log('update_game', data);
     });
   }
 
