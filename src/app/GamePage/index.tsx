@@ -8,6 +8,7 @@ import { Game } from "./Game";
 
 import "./styles.scss";
 
+
 export class GamePage extends React.Component {
   state = {
     metrics: {} as any,

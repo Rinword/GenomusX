@@ -32,45 +32,10 @@ export class Game extends React.Component {
     return (
       <Box direction='row'>
         <Box>
-          <GameMap map={_map} tileSize={64} />
+          <GameMap map={map} tileSize={64} />
         </Box>
       </Box>
     );
   }
 }
 
-const _map: Cell[][] = [
-  [
-    {
-      type: 'forest',
-    },
-    {
-      type: 'plain',
-    },
-    {
-      type: 'swamp',
-    },
-  ],
-  [
-    {
-      type: 'forest',
-    },
-    {
-      type: 'mountain',
-    },
-    {
-      type: 'hills',
-    },
-  ],
-  [
-    {
-      type: 'swamp',
-    },
-    {
-      type: 'hills',
-    },
-    {
-      type: 'plain',
-    },
-  ]
-]
