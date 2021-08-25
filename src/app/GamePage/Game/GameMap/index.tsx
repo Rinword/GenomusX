@@ -26,8 +26,8 @@ export class GameMap extends React.Component<GameMapProps> {
     return (
       <Box>
         <MapWrap
-          width={`${map.length * tileSize + 4}px`}
-          height={`${map[0].length * tileSize + 4}px`}
+          width={`${map[0].length * tileSize + 4}px`}
+          height={`${map.length * tileSize + 4}px`}
         >
           {map.map((column: Cell[], y) =>
             column.map((cell, x) => (

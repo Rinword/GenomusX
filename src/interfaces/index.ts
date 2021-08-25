@@ -8,3 +8,9 @@ export interface GameI {
   map: Cell[][];
   options: any;
 }
+
+export interface GameCreateOptions {
+  mapSizeX: number;
+  mapSizeY: number;
+  biomCells: Record<BIOM_TYPE, number>;
+}

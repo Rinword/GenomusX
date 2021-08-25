@@ -1,5 +1,5 @@
 import React from "react";
-import { Button as GButton } from 'grommet';
+// import { Button as GButton } from 'grommet';
 
 import "./styles.scss";
 
@@ -28,10 +28,10 @@ export class Button extends React.Component<FButtonProps> {
     } = this.props;
 
     return (
-      <GButton className={"ux-btn " + className} onClick={onClick} {...params}>
+      <button className={"ux-btn " + className} onClick={onClick} {...params}>
         {children}
         {innerIconName && this.renderInnerIcon()}
-      </GButton>
+      </button>
     );
   }
 }
