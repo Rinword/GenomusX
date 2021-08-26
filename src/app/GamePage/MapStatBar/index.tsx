@@ -58,7 +58,7 @@ export class MapStatBar extends React.Component<any, any> {
           <Text>Распределение биомов</Text>
           {bioms.map(type => <BiomStat key={type} type={type} tempData={tempData} />)}
         </Box>
-        <Button onClick={this.iterateMap}>Сгенерировать клетку</Button>
+        <Button onClick={this.iterateMap}>Запустить генерацию</Button>
       </Box>
     );
   }
@@ -70,7 +70,7 @@ const BiomStat = (props: BiomStatType) => {
 
   return <Box direction="row" gap="small">
     <CellWrap type={type} />
-    <Text style={{ width: '40px'}}>{(remain[type]).toFixed(0)}</Text>
+    <Text style={{ width: '40px'}}>{remain[type]}</Text>
     <Text style={{ width: '40px'}}>{(currentProportionsCount[type] * 100).toFixed(2)}%</Text>
   </Box>
 }

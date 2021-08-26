@@ -128,7 +128,7 @@ export class OptionsBar extends React.Component<any, any> {
               />
             ))}
           </Box>
-          <Button onClick={this.sendMapSettings}>Сгенерировать карту</Button>
+          <Button onClick={this.sendMapSettings}>Сгенерировать точки роста</Button>
         </Box>
       </Box>
     );
