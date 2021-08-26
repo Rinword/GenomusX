@@ -20,8 +20,8 @@ interface GameCreateOptions {
 
 export class OptionsBar extends React.Component<any, any> {
   state: GameCreateOptions = {
-    mapSizeX: 15,
-    mapSizeY: 10,
+    mapSizeX: 8,
+    mapSizeY: 5,
     _cellsCount: 150,
     proportions: {
       plain: 20,
@@ -48,8 +48,7 @@ export class OptionsBar extends React.Component<any, any> {
 
   sendMapSettings = () => {
     const { mapSizeX, mapSizeY, proportions } = this.state;
-    const options = { mapSizeX, mapSizeY };
-    console.log(options);
+    const options = { mapSizeX, mapSizeY, proportions };
     socket.get().emit('game_create', options as any);
   };
 
@@ -88,6 +87,10 @@ export class OptionsBar extends React.Component<any, any> {
 
     this.setState(state);
   };
+
+  componentDidMount() {
+    this.sendMapSettings();
+  }
 
   render() {
     const { mapSizeX, mapSizeY, proportions, normalizedPercents, finalCellsCount } = this.state;
@@ -160,7 +163,7 @@ interface RangerProps {
   onChange: (value: string, event: any) => void;
 }
 
-const CellWrap = styled.div<{ type: BIOM_TYPE }>`
+export const CellWrap = styled.div<{ type: BIOM_TYPE }>`
   border: 1px solid white;
   background-image: ${(props: any) => getTileTexture(props)};
   background-size: cover;

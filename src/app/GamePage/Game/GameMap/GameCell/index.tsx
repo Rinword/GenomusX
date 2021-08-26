@@ -18,7 +18,7 @@ export class GameCell extends React.Component<GameMapProps> {
   render() {
     const { cell, position, tileSize } = this.props;
     const { x, y } = position;
-    const { type } = cell;
+    const { type, readyToSet } = cell;
 
     if (!cell.type) {
       return null;
@@ -33,17 +33,22 @@ export class GameCell extends React.Component<GameMapProps> {
           top: `${y * tileSize}px`,
         }}
         type={type}
+        readyToSet={readyToSet}
       >
+        {/*{x}, {y}*/}
       </CellWrap>
     );
   }
 }
 
-const CellWrap = styled.div<{ type: BIOM_TYPE }>`
+const CellWrap = styled.div<{ type: any; readyToSet: boolean }>`
   position: absolute;
-  border: 0px solid #dedede;
+  border: ${props =>  {
+    return props.type === 'empty' ? '1px ' : '0px'
+}} solid #dedede;
   background-image: ${(props: any) => getTileTexture(props)};
   box-sizing: border-box;
+  background-color: ${(props: any) => props.readyToSet ? 'rgba(63,63,63, 0.7)' : ''};
 `;
 
 function getTileTexture(props: { type: BIOM_TYPE }) {

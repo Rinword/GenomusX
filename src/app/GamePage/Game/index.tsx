@@ -8,18 +8,22 @@ import { GameMap } from "./GameMap";
 
 export class Game extends React.Component {
   state = {
-    metrics: {} as any,
-    map: [] as Cell[][],
+    game: {
+      map: {
+        grid: [] as Cell[][]
+      },
+      createOption: {}
+    },
   };
 
   componentDidMount() {
     socket.get().on("update_game", (data: GameI) => {
-      this.setState({ map: data.map });
+      this.setState({ game: data });
     });
   }
 
   render() {
-    const { map } = this.state;
+    const { game } = this.state;
 
     // if (!map.length) {
     //   return (
@@ -32,7 +36,7 @@ export class Game extends React.Component {
     return (
       <Box direction='row'>
         <Box>
-          <GameMap map={map} tileSize={64} />
+          <GameMap map={game.map.grid} tileSize={64} />
         </Box>
       </Box>
     );
