@@ -34,7 +34,7 @@ export class Game extends React.Component {
     // }
 
     return (
-      <Box direction='row'>
+      <Box direction='row' margin={{ left: 'medium' }}>
         <Box>
           <GameMap map={game.map.grid} tileSize={64} />
         </Box>

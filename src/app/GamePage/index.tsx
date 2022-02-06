@@ -17,7 +17,7 @@ export class GamePage extends React.Component {
       <Box align="start">
         <Box style={{ border: '1px solid white' }} margin="medium" pad="medium" direction="row" gap="small">
           <OptionsBar />
-          <MapStatBar />
+          {/*<MapStatBar />*/}
         </Box>
         <Game />
       </Box>

@@ -24,18 +24,18 @@ export class OptionsBar extends React.Component<any, any> {
     mapSizeY: 5,
     _cellsCount: 150,
     proportions: {
-      plain: 20,
-      hills: 20,
-      swamp: 20,
-      forest: 20,
-      mountain: 20,
+      plain: 35,
+      hills: 15,
+      swamp: 10,
+      forest: 30,
+      mountain: 10,
     },
     normalizedPercents: {
-      plain: 0.2,
-      hills: 0.2,
-      swamp: 0.2,
-      forest: 0.2,
-      mountain: 0.2,
+      plain: 0.35,
+      hills: 0.15,
+      swamp: 0.1,
+      forest: 0.3,
+      mountain: 0.1,
     },
     finalCellsCount: {
       plain: 30,
@@ -43,7 +43,7 @@ export class OptionsBar extends React.Component<any, any> {
       swamp: 30,
       forest: 30,
       mountain: 30,
-    }
+    },
   };
 
   sendMapSettings = () => {
@@ -54,7 +54,7 @@ export class OptionsBar extends React.Component<any, any> {
 
   changeForm = (path?: string, event?: any) => {
     const state = { ...this.state };
-    if(path && event) {
+    if (path && event) {
       const { value } = event.target;
       _.set(state, path, value);
     }
@@ -89,6 +89,7 @@ export class OptionsBar extends React.Component<any, any> {
   };
 
   componentDidMount() {
+    this.changeForm();
     this.sendMapSettings();
   }
 
@@ -96,40 +97,38 @@ export class OptionsBar extends React.Component<any, any> {
     const { mapSizeX, mapSizeY, proportions, normalizedPercents, finalCellsCount } = this.state;
 
     return (
-      <Box margin={{ bottom: 'small' }}>
+      <Box>
         <Box>
-          <Box>
-            <Text>Размеры карты, X, Y</Text>
-            <Box direction="row" gap="small">
-              <TextInput
-                size="xsmall"
-                placeholder="Xsize"
-                value={mapSizeX}
-                onChange={event => this.changeForm('mapSizeX', event)}
-              />
-              <TextInput
-                size="xsmall"
-                placeholder="Ysize"
-                value={mapSizeY}
-                onChange={event => this.changeForm('mapSizeY', event)}
-              />
-            </Box>
+          <Text>Размеры карты, X, Y</Text>
+          <Box direction="row" gap="small">
+            <TextInput
+              size="xsmall"
+              placeholder="Xsize"
+              value={mapSizeX}
+              onChange={event => this.changeForm('mapSizeX', event)}
+            />
+            <TextInput
+              size="xsmall"
+              placeholder="Ysize"
+              value={mapSizeY}
+              onChange={event => this.changeForm('mapSizeY', event)}
+            />
           </Box>
-          <Box>
-            <Text>Доли биомов</Text>
-            {bioms.map(type => (
-              <Ranger
-                key={type}
-                name={type}
-                value={proportions[type]}
-                percent={normalizedPercents[type]}
-                cells={finalCellsCount[type]}
-                onChange={this.changeForm}
-              />
-            ))}
-          </Box>
-          <Button onClick={this.sendMapSettings}>Сгенерировать точки роста</Button>
         </Box>
+        <Box>
+          <Text>Доли биомов</Text>
+          {bioms.map(type => (
+            <Ranger
+              key={type}
+              name={type}
+              value={proportions[type]}
+              percent={normalizedPercents[type]}
+              cells={finalCellsCount[type]}
+              onChange={this.changeForm}
+            />
+          ))}
+        </Box>
+        <Button onClick={this.sendMapSettings}>Сгенерировать карту</Button>
       </Box>
     );
   }

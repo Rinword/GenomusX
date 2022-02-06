@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Button } from "../../../../../ui/Button";
 
 import { BIOM_TYPE, Cell } from "interfaces";
 
@@ -7,6 +8,7 @@ interface GameMapProps {
   cell: Cell;
   position: CellPosition;
   tileSize: number;
+  onClick: (x: number, y: number) => void;
 }
 
 interface CellPosition {
@@ -16,7 +18,7 @@ interface CellPosition {
 
 export class GameCell extends React.Component<GameMapProps> {
   render() {
-    const { cell, position, tileSize } = this.props;
+    const { cell, position, tileSize, onClick } = this.props;
     const { x, y } = position;
     const { type, readyToSet } = cell;
 
@@ -34,6 +36,7 @@ export class GameCell extends React.Component<GameMapProps> {
         }}
         type={type}
         readyToSet={readyToSet}
+        onClick={() => onClick(x, y)}
       >
         {/*{x}, {y}*/}
       </CellWrap>

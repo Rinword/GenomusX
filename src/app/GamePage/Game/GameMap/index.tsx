@@ -1,10 +1,11 @@
-import React from "react";
-import { Box, Text } from "grommet";
-import { GameCell } from "./GameCell";
+import React from 'react';
+import { Box, Text } from 'grommet';
+import { GameCell } from './GameCell';
+import socket from 'io';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { Cell } from "interfaces";
+import { Cell } from 'interfaces';
 
 interface GameMapProps {
   map: Cell[][];
@@ -12,6 +13,11 @@ interface GameMapProps {
 }
 
 export class GameMap extends React.Component<GameMapProps> {
+  clickToMap = (x: number, y: number) => {
+    console.log(x, y);
+    // socket.get().emit('game_select_cell', { x, y });
+  };
+
   render() {
     const { map, tileSize } = this.props;
 
@@ -31,8 +37,14 @@ export class GameMap extends React.Component<GameMapProps> {
         >
           {map.map((column: Cell[], y) =>
             column.map((cell, x) => (
-              <GameCell key={`${x}_${y}`} cell={cell} position={{ x, y }} tileSize={tileSize} />
-            )),
+              <GameCell
+                key={`${x}_${y}`}
+                cell={cell}
+                position={{ x, y }}
+                tileSize={tileSize}
+                onClick={this.clickToMap}
+              />
+            ))
           )}
         </MapWrap>
       </Box>
